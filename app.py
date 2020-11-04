@@ -34,14 +34,12 @@ def addGoodReadsPercent(token, collectionURL, percent):
     percent = int(percent)
     percent = int(float(percent/100))
     row.percent = percent
-    #row.date = date
 
 
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
     percent = request.args.get('percent')
-    #date = request.args.get('date')
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     addGoodReadsPercent(token_v2, url, percent)
