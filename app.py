@@ -31,15 +31,15 @@ def addGoodReadsPercent(token, collectionURL, content):
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
     row.title = "Test123"
-    content = int(content)
-    content = int(float(content/100))
-    row.percent = content
+    percent = int(content)
+    percent = int(float(percent/100))
+    row.percent = percent
     #row.date = date
 
 
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
-    percent = request.args.get('content')
+    percent = request.args.get('percent')
     #date = request.args.get('date')
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
