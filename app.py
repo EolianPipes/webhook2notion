@@ -31,7 +31,8 @@ def create_todo():
 def getBook(token, collectionURLBook, title):
     client = NotionClient(token)
     cvBook = client.get_collection_view(collectionURLBook)
-    for row in cvBook.collection.get_rows(search=title):
+    bookName = str(title)
+    for row in cvBook.collection.get_rows(search=bookName):
         authorId = row.id
         return authorId
 
@@ -57,7 +58,7 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent,
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
-    title = str(request.args.get('title'))
+    title = request.args.get('title')
     percent = request.args.get('percent')
     date = str(request.args.get('date'))
     token_v2 = os.environ.get("TOKEN")
