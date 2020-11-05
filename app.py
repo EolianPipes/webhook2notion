@@ -28,13 +28,19 @@ def create_todo():
     createNotionTask(token_v2, url, todo)
     return f'added {todo} to Notion'
 
+def fix_title(title):
+    first, rest = title.split(None, 1)
+    if first in {'A', 'An', 'The'}:
+        return rest + ', ' + first
+    return title
+
 def getBook(token, collectionURLBook, title):
     client = NotionClient(token)
     cvBook = client.get_collection_view(collectionURLBook)
-    bookName = str(title)
-    for row in cvBook.collection.get_rows(search=bookName):
-        authorId = row.id
-        return authorId
+    for row in cvBook.collection.get_rows(search=title):
+        if row.title == fix_title(title):
+            authorId = row.id
+            return authorId
 
 def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent, date):
     # notion
