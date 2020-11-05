@@ -28,12 +28,12 @@ def create_todo():
     createNotionTask(token_v2, url, todo)
     return f'added {todo} to Notion'
 
-def addGoodReadsPercent(token, collectionURL, percent, date):
+def addGoodReadsPercent(token, collectionURL, title, percent, date):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
-    row.title = "Test123"
+    #row.title = title
     #CST = tz.gettz('America/Chicago')
     #dateTest = "2020-11-05 10:49:18"
     date = parser.parse(date)
@@ -41,16 +41,19 @@ def addGoodReadsPercent(token, collectionURL, percent, date):
     percent = int(percent)
     percent = float(percent/100)
     row.percent = percent
+    title = title + " | " + date
+    row.title = title
 
 
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
+    title = request.args.get('title')
     percent = request.args.get('percent')
     date = str(request.args.get('date'))
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
-    addGoodReadsPercent(token_v2, url, percent, date)
+    addGoodReadsPercent(token_v2, url, title, percent, date)
     return f'added {percent} to Notion'
 
 
