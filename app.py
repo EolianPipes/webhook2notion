@@ -35,8 +35,7 @@ def addGoodReadsPercent(token, collectionURL, percent):
     row = cv.collection.add_row()
     row.title = "Test123"
     #CST = tz.gettz('America/Chicago')
-    #now = datetime.now()
-    row.date = cv.NotionDate(datetime.now())
+    row.date = datetime.now()
     percent = int(percent)
     percent = float(percent/100)
     row.percent = percent
