@@ -32,7 +32,7 @@ def addGoodReadsPercent(token, collectionURL, content):
     row = cv.collection.add_row()
     row.title = "Test123"
     content = int(content)
-    content = int(float(content/100))
+    content = int(float(content))
     row.percent = content
 
 
