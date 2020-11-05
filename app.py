@@ -1,5 +1,8 @@
 
 import os
+from dateutil import parser
+from dateutil import tz
+from datetime import datetime
 from notion.client import NotionClient
 from flask import Flask
 from flask import request
@@ -31,7 +34,7 @@ def addGoodReadsPercent(token, collectionURL, percent):
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
     row.title = "Test123"
-    row.date = now()
+    row.date = datetime.now(tz.UTC)
     percent = int(percent)
     percent = float(percent/100)
     row.percent = percent
