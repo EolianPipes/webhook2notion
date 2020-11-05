@@ -57,7 +57,7 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent,
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
-    title = request.args.get('title')
+    title = str(request.args.get('title'))
     percent = request.args.get('percent')
     date = str(request.args.get('date'))
     token_v2 = os.environ.get("TOKEN")
