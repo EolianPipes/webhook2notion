@@ -47,7 +47,7 @@ def addGoodReadsPercent(token, collectionURL, date, percent):
 def add_percent():
 
     percent = request.args.get('percent')
-    date = request.args.get('date')
+    date = str(request.args.get('date'))
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     addGoodReadsPercent(token_v2, url, percent, date)
