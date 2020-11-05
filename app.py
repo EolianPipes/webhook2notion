@@ -31,19 +31,19 @@ def addGoodReadsPercent(token, collectionURL, content):
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
     row.title = "Test123"
-    content = int(content)
-    content = int(float(content/100))
+    #content = int(content)
+    #content = int(float(content/100))
     row.percent = content
 
 
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
-    thing = request.args.get('thing')
+    percent = request.args.get('percent')
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
-    addGoodReadsPercent(token_v2, url, thing)
-    return f'added {thing} to Notion'
+    addGoodReadsPercent(token_v2, url, percent)
+    return f'added {percent} to Notion'
 
 
 if __name__ == '__main__':
