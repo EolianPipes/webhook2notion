@@ -41,7 +41,7 @@ def addGoodReadsPercent(token, collectionURL, title, percent, date):
     percent = int(percent)
     percent = float(percent/100)
     row.percent = percent
-    title = title + " | " + str(date)
+    title = title + " | " + str(row.date)
     row.title = title
 
 
