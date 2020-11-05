@@ -25,15 +25,15 @@ def create_todo():
     createNotionTask(token_v2, url, todo)
     return f'added {todo} to Notion'
 
-def addGoodReadsPercent(token, collectionURL, percent):
+def addGoodReadsPercent(token, collectionURL, content):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
     row.title = "Test123"
-    percent = int(percent)
-    percent = int(float(percent/100))
-    row.percent = percent
+    content = int(content)
+    content = int(float(content/100))
+    row.percent = content
 
 
 @app.route('/add_percent', methods=['GET'])
