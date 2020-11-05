@@ -56,8 +56,8 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent,
     percent = float(percent/100)
     row.percent = percent
     titleDate = datetime.strftime(date, "%m/%d/%Y")
-    title = title + " | " + titleDate
-    row.title = title
+    titleBook = title + " | " + titleDate
+    row.title = titleBook
     row.book = getBook(token, collectionURLBook, title)
 
 
