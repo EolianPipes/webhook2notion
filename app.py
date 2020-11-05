@@ -28,7 +28,7 @@ def create_todo():
     createNotionTask(token_v2, url, todo)
     return f'added {todo} to Notion'
 
-def addGoodReadsPercent(token, collectionURL, date, percent):
+def addGoodReadsPercent(token, collectionURL, percent, date):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
