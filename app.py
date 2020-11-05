@@ -39,11 +39,11 @@ def addGoodReadsPercent(token, collectionURL, content):
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
-    percent = request.args.get('percent')
+    thing = request.args.get('thing')
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
-    addGoodReadsPercent(token_v2, url, percent)
-    return f'added {percent} to Notion'
+    addGoodReadsPercent(token_v2, url, thing)
+    return f'added {thing} to Notion'
 
 
 if __name__ == '__main__':
