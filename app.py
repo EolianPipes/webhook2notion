@@ -34,7 +34,7 @@ def addGoodReadsPercent(token, collectionURL, percent):
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
     row.title = "Test123"
-    row.date = datetime.now(tz.UTC)
+    row.date = datetime.now()
     percent = int(percent)
     percent = float(percent/100)
     row.percent = percent
