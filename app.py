@@ -35,7 +35,9 @@ def addGoodReadsPercent(token, collectionURL, percent):
     row = cv.collection.add_row()
     row.title = "Test123"
     #CST = tz.gettz('America/Chicago')
-    row.date = datetime.now()
+    dateTest = "2020-11-05 10:49:18"
+    date2 = parser.parse(dateTest)
+    row.date = date2
     percent = int(percent)
     percent = float(percent/100)
     row.percent = percent
