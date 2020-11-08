@@ -50,7 +50,7 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent)
     #row.title = title
     #CST = tz.gettz('America/Chicago')
     #dateTest = "2020-11-05 10:49:18"
-    date = parser.parse(datetime.now())
+    date = datetime.now()
     row.date = date
     percent = int(percent)
     percent = float(percent/100)
