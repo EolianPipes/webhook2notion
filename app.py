@@ -42,7 +42,7 @@ def getBook(token, collectionURLBook, title):
             authorId = row.id
             return authorId
 
-def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent, date):
+def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
@@ -50,7 +50,7 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent,
     #row.title = title
     #CST = tz.gettz('America/Chicago')
     #dateTest = "2020-11-05 10:49:18"
-    date = parser.parse(date)
+    date = parser.parse(datetime.now())
     row.date = date
     percent = int(percent)
     percent = float(percent/100)
@@ -64,14 +64,14 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent,
 @app.route('/add_percent', methods=['GET'])
 def add_percent():
 
-    title = str(request.args.get('title'))
+    title = str(os.environ.get('TITLE'))
     percent = request.args.get('percent')
-    date = str(request.args.get('date'))
+    #date = str(request.args.get('date'))
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     urlb = os.environ.get("URLB")
-    addGoodReadsPercent(token_v2, url, urlb, title, percent, date)
-    return f'added {percent} for {title} on {date} to Notion'
+    addGoodReadsPercent(token_v2, url, urlb, title, percent)
+    return f'added {percent} for {title} to Notion'
 
 
 if __name__ == '__main__':
