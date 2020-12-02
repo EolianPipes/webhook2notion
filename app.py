@@ -75,8 +75,10 @@ def add_percent():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     urlb = os.environ.get("URLB")
-    q.enqueue(addGoodReadsPercent, token_v2, url, urlb, title, percent)
-    addGoodReadsPercent(token_v2, url, urlb, title, percent)
+    q.enqueue(addGoodReadsPercent, 
+        args=(token_v2, url, urlb, title, percent)
+    )
+    #addGoodReadsPercent(token_v2, url, urlb, title, percent)
     return f'added {percent} for {title} to Notion'
 
 
