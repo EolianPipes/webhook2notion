@@ -10,9 +10,6 @@ from rq import Queue
 from worker import conn
 from utils import addGoodReadsPercent
 
-q = Queue(connection=conn)
-
-
 app = Flask(__name__)
 
 
@@ -75,6 +72,7 @@ def add_percent():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     urlb = os.environ.get("URLB")
+    q = Queue(connection=conn)
     q.enqueue(addGoodReadsPercent, 
         args=(token_v2, url, urlb, title, percent)
     )
