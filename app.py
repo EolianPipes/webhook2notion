@@ -6,6 +6,10 @@ from datetime import datetime
 from notion.client import NotionClient
 from flask import Flask
 from flask import request
+from rq import Queue
+from worker import conn
+
+q = Queue(connection=conn)
 
 
 app = Flask(__name__)
@@ -70,6 +74,7 @@ def add_percent():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     urlb = os.environ.get("URLB")
+    q.enqueue(addGoodReadsPercent, token_v2, url, urlb, title, percent)
     addGoodReadsPercent(token_v2, url, urlb, title, percent)
     return f'added {percent} for {title} to Notion'
 
