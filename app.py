@@ -8,6 +8,7 @@ from flask import Flask
 from flask import request
 from rq import Queue
 from worker import conn
+from utils import addGoodReadsPercent
 
 q = Queue(connection=conn)
 
@@ -32,7 +33,7 @@ def create_todo():
     createNotionTask(token_v2, url, todo)
     return f'added {todo} to Notion'
 
-def fix_title(title):
+""" def fix_title(title):
     first, rest = title.split(None, 1)
     if first in {'A', 'An', 'The'}:
         return rest + ', ' + first
@@ -62,7 +63,7 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent)
     titleDate = datetime.strftime(date, "%m/%d/%Y")
     titleBook = title + " | " + titleDate
     row.title = titleBook
-    row.book = getBook(token, collectionURLBook, title)
+    row.book = getBook(token, collectionURLBook, title) """
 
 
 @app.route('/add_percent', methods=['GET'])
