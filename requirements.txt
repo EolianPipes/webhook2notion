@@ -4,4 +4,3 @@ python-dateutil
 datetime
 redis>=3
 rq>=0.13
-urllib3
