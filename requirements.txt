@@ -2,4 +2,5 @@ Flask==0.10.1
 notion
 python-dateutil
 datetime
-rq
+redis>=3
+rq>=0.13
