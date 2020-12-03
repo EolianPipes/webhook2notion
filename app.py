@@ -11,6 +11,7 @@ from utils import addGoodReadsPercent
 
 app = Flask(__name__)
 
+q = Queue(connection=conn)
 
 def createNotionTask(token, collectionURL, content):
     # notion
@@ -71,12 +72,11 @@ def add_percent():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     urlb = os.environ.get("URLB")
-    q = Queue(connection=conn)
     q.enqueue(addGoodReadsPercent, 
-        args=(token_v2, url, urlb, title, percent)
+        args=(token_v2, url, urlb, title, percent,)
     )
     #addGoodReadsPercent(token_v2, url, urlb, title, percent)
-    return f'added {percent} for {title} to Notion'
+    return f'Added {percent} for {title} to Notion'
 
 
 if __name__ == '__main__':
