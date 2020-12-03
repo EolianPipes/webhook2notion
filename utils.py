@@ -20,9 +20,6 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent)
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
-    #row.title = title
-    #CST = tz.gettz('America/Chicago')
-    #dateTest = "2020-11-05 10:49:18"
     date = datetime.now()
     row.date = date
     percent = int(percent)
