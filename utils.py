@@ -32,3 +32,4 @@ def addGoodReadsPercent(token, collectionURL, collectionURLBook, title, percent)
     titleBook = title + " | " + titleDate
     row.title = titleBook
     row.book = getBook(token, collectionURLBook, title)
+    return
