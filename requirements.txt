@@ -1,5 +1,5 @@
 Flask==0.10.1
-notion
+notion>=0.0.28
 python-dateutil
 datetime
 redis>=3
