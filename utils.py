@@ -2,8 +2,7 @@ from datetime import datetime
 from notion.client import NotionClient
 
 def fix_title(title):
-    title_length = len(title.split())
-    if title_length > 1
+    if len(title.split()) > 1:
         first, rest = title.split(None, 1)
         if first in {'A', 'An', 'The'}:
             return rest + ', ' + first
