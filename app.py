@@ -3,8 +3,7 @@ from dateutil import parser
 from dateutil import tz
 from datetime import datetime
 from notion.client import NotionClient
-from flask import Flask
-from flask import request
+from flask import Flask, request, jsonify
 from rq import Queue
 from worker import conn
 from utils import addGoodReadsPercent
@@ -45,6 +44,10 @@ def add_percent():
     )
     return f'Added {percent} for {title} to Notion'
 
+@app.route('/rss_json', methods=['GET', 'POST'])
+def add_rss_json():
+    content = request.get_json
+    return jsonify(content)
 
 if __name__ == '__main__':
     app.debug = True
