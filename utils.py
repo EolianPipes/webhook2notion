@@ -2,9 +2,10 @@ from datetime import datetime
 from notion.client import NotionClient
 
 def fix_title(title):
-    first, rest = title.split(None, 1)
-    if first in {'A', 'An', 'The'}:
-        return rest + ', ' + first
+    if len(title.split()) > 1:
+        first, rest = title.split(None, 1)
+        if first in {'A', 'An', 'The'}:
+            return rest + ', ' + first
     return title
 
 def getBook(token, collectionURLBook, title):
