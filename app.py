@@ -46,6 +46,7 @@ def add_percent():
 
 @app.route('/rss_json', methods=['GET', 'POST'])
 def add_rss_json():
+    request.headers.get("X-Requested-With") == "XMLHttpRequest"
     content = request.get_json
     return jsonify(content)
 
